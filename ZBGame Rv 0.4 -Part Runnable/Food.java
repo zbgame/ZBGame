@@ -1,15 +1,15 @@
 
-package item;
+ 
 import java.util.ArrayList;
 
 public class Food extends Items{  
 
 private String itemName;
 private int foodStat, increasedHealth, decreasedHealth;
-private Characters health;
+private Character health;
 ArrayList<String> foodStuff = new ArrayList<String>();
 
-public Food(String n, int f, Characters h, int i, int d)
+public Food(String n, int f, Character h, int i, int d)
 {
   increasedHealth = i;
   decreasedHealth = d;

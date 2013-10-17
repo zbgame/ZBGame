@@ -2,27 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package item;
+ 
 
 /**
  *
  * @author Samantha
  */
-class Items {
-public class Item 
+public class Items    //sbw eliminated inner class Item  2013 10 17  1600
 {
-
+ 
     public int worth;
     public int howFragile;
     public double probabilityInRoom;
-    public Characters health;
+    public Character health;
  
-    public Item(int w, int h, double p, Characters h)  //intializes the objects
+     public Items()  //sw: Armor extensd Items needs no-arg constructor  
+     {   }
+    
+    public Items(int w, int h, double p, Character hh)  //sw: hh //intializes the objects
     {
         probabilityInRoom = p;
         howFragile = h;
         worth = w;
-        health = h;
+        health = hh;
     }
 
     public double getProb()
@@ -40,4 +42,4 @@ public class Item
     }
 }
     
-}
+

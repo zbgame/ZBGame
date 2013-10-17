@@ -1,16 +1,17 @@
 
-package item;
+ 
 import java.util.ArrayList;
 
-public class Armor extends Items {
+public class Armor extends Items    
+{
     
-    private Characters defense;
+    private Character defense;  //sw Character vs Characters
     private int addedDefense, totalDef;
     private String armorName;
     private int armorStat;
     ArrayList<String> armorRoster = new ArrayList<String>();
     
-    public Armor(Characters d, int a)
+    public Armor(Character d, int a)
     {
         defense = d;
         addedDefense = a;        
