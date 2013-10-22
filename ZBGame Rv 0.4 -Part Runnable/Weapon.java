@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Weapon extends Items{
     
-    private Characters strength;
+    private Character strength;
     private int addedStrength, totalStrength;
     private String weaponName;
     private int weaponStat;
     ArrayList<String> weaponRoster = new ArrayList<String>();
     
-    public Weapon(Characters s, int a)
+    public Weapon(Character s, int a)
     {
         strength = s;
         addedStrength = a;        
@@ -31,12 +31,12 @@ public class Weapon extends Items{
     
     public void hit()
     {
-        totalStrength = strength += weaponStat;
+        totalStrength = (strength + weaponStat);
         System.out.println(totalStrength + " has been added to your weapon stat");
     }       
     public void kaputt()
     {
-        totalStrength = strength -= weaponStat;
+        totalStrength = strength - weaponStat;
         System.out.println(totalStrength + " has been removed to your weapon stat");
     }
 }
