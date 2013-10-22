@@ -1,4 +1,4 @@
-package mytestfile;
+ 
 /** @author Blacklotus3
  */
 public class Money {

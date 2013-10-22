@@ -1,14 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
  
 
 /**
  *
  * @author Samantha
  */
-public class Items    //sbw eliminated inner class Item  2013 10 17  1600
+public class Item    //sbw eliminated inner class Item  2013 10 17  1600
 {
  
     public int worth;
@@ -16,10 +13,10 @@ public class Items    //sbw eliminated inner class Item  2013 10 17  1600
     public double probabilityInRoom;
     public Character health;
  
-     public Items()  //sw: Armor extensd Items needs no-arg constructor  
+     public Item()  //sw: Armor extensd Items needs no-arg constructor  
      {   }
     
-    public Items(int w, int h, double p, Character hh)  //sw: hh //intializes the objects
+    public Item(int w, int h, double p, Character hh)  //sw: hh //intializes the objects
     {
         probabilityInRoom = p;
         howFragile = h;

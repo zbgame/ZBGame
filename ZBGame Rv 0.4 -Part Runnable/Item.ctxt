@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Item()
+comment1.params=w\ h\ p\ hh
+comment1.target=Item(int,\ int,\ double,\ Character)
+comment2.params=
+comment2.target=double\ getProb()
+comment3.params=
+comment3.target=int\ getFrag()
+comment4.params=
+comment4.target=int\ getWorth()
+numComments=5

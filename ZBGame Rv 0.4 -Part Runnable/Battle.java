@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -31,7 +28,7 @@ public class Battle
       }
   }
    
-  public Zombie(String n, int h, int d, Item he, int hc)   // constructor
+  public Battle(String n, int h, int d, Item he, int hc)   // constructor
     {
         name = n; //not really sure why it needs a name but...
         maxHealth = h;
@@ -42,7 +39,7 @@ public class Battle
         alive = true;
     }
     
-   public Zombie(Zombie z)                                 // copy constructor
+   public Battle(Battle z)                                 // copy constructor
    {
         name = z.name; //again not really necessary
         maxHealth = z.maxHealth;
