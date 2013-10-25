@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ setMoney()
+comment1.params=change
+comment1.target=void\ setChange(int)
+comment2.params=
+comment2.target=void\ changeWallet()
+comment3.params=
+comment3.target=java.lang.String\ currentWallet()
+comment4.params=
+comment4.target=void\ buySoda()
+comment5.params=
+comment5.target=void\ findMoney()
+numComments=6

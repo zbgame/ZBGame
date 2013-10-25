@@ -1,28 +1,53 @@
 /** @author Blacklotus3
  * edited on 10/21/2013 by Brandon Pugh
+ * edited by Steven Moore from 10/21/2013 - current
  */
 public class Character 
 {
     private String name;
  
-    private int HP=3;
+    private int health=3;
     private boolean alive; //not used at all
+    Inventory i1;
+    KeyRing k1;
+    
+    public Character(String cname, int hp, Inventory i, KeyRing k)
+    {
+        cname = name;
+        hp = health;
+        i = i1;
+        k = k1;
+    }
     
     
-
+    
+    
     //Setters
     public void setName(String callme) 
     {
-       name = callme;
+       System.out.println("What is your character's name?");
+       callme = keyboard.nextString();
        
     }
     
-   public void setHitpoints(int hits) 
+   public void setHitpoints(int hp) 
    {
-       HP = hits;
+       hp = hits;
+       //
    }
    
+   public void retrieveItem(Inventory i)
+   {
+       //iunno if needed or not
+    }
+    
+    public void useItem(Inventory i)
+    {
+        //not sure if needed or not either
+    }
+   
     //Getters
+    
    public String getName() 
    {
        return name;
@@ -30,19 +55,8 @@ public class Character
     
    public int getHitpoints() 
    {
-        return HP; 
+        return hp; 
    }
     
-   public String getsDead()
-   { 
-     if (HP > 0)
-     {
-         return "Good news, you are still alive.";
-     }
-     else
-     {
-         return "Sorry You died and now eat brains";
-     }
-   } 
 }
 

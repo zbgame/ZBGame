@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=KeyRing()
+comment1.params=key
+comment1.target=void\ addKey(java.lang.String)
+comment2.params=k
+comment2.target=void\ setKey(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getKey()
+comment4.params=key
+comment4.target=boolean\ checkKeyRing(java.lang.String)
+numComments=5
