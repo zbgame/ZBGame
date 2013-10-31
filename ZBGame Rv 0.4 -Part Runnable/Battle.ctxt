@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=character
+comment0.target=void\ fight(java.lang.Class)
+comment1.params=n\ h\ d\ he\ hc
+comment1.target=Battle(java.lang.String,\ int,\ int,\ Item,\ int)
+comment2.params=z
+comment2.target=Battle(Battle)
+comment3.params=
+comment3.target=java.lang.String\ name()
+comment4.params=
+comment4.target=Item\ drop()
+comment5.params=r
+comment5.target=void\ getDamaged(int)
+comment6.params=
+comment6.target=int\ attack()
+comment7.params=
+comment7.target=int\ dropCash()
+numComments=8

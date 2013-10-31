@@ -3,15 +3,15 @@
 
 import java.util.ArrayList;
 
-public class Weapon extends Items{
+public class Weapon extends Item{
     
-    private Character strength;
+    private int strength;
     private int addedStrength, totalStrength;
     private String weaponName;
     private int weaponStat;
     ArrayList<String> weaponRoster = new ArrayList<String>();
     
-    public Weapon(Character s, int a)
+    public Weapon(int s, int a)
     {
         strength = s;
         addedStrength = a;        

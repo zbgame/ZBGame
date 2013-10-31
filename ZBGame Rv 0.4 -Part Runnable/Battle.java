@@ -22,7 +22,7 @@ public class Battle
   {
       //The fight needs to be decided as either a turn by turn or random intervals
       //if turn by turn
-      while (alive == true && character.dead)
+      while (alive == true )
       {
           
       }

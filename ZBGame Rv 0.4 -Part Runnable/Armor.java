@@ -1,16 +1,16 @@
 
 import java.util.ArrayList;
 
-public class Armor extends Items    
+public class Armor extends Item    
 {
     
-    private Character defense;  //sw Character vs Characters
+    private int defense;  //sw Character vs Characters
     private int addedDefense, totalDef;
     private String armorName;
     private int armorStat;
     ArrayList<String> armorRoster = new ArrayList<String>();
     
-    public Armor(Character d, int a)
+    public Armor(int d, int a)
     {
         defense = d;
         addedDefense = a;        
@@ -30,7 +30,7 @@ public class Armor extends Items
     
     public void protect()
     {
-        totalDef = defense += armorStat;
+        totalDef = defense + armorStat;
         System.out.println(totalDef + " has been added to your defense stat");
     }       
     public void broken()

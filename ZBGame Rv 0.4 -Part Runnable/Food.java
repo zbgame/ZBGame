@@ -2,14 +2,14 @@
  
 import java.util.ArrayList;
 
-public class Food extends Items{  
+public class Food extends Item{  
 
 private String itemName;
 private int foodStat, increasedHealth, decreasedHealth;
-private Character health;
+private int health;
 ArrayList<String> foodStuff = new ArrayList<String>();
 
-public Food(String n, int f, Character h, int i, int d)
+public Food(String n, int f, int h, int i, int d)
 {
   increasedHealth = i;
   decreasedHealth = d;
@@ -30,7 +30,7 @@ public Food(String n, int f, Character h, int i, int d)
     }
     public void eat()
     {
-       increasedHealth = health += foodStat;
+       increasedHealth = health + foodStat;
        System.out.println(increasedHealth + " has been added to your HP");
     } 
     

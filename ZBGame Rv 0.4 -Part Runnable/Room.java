@@ -6,8 +6,9 @@ import java.util.Scanner;
  */
 public class Room 
 {      Inventory I1=new Inventory();
-       Character c1= new Character();
-       Scanner kybd = new Scanner(System.in);String rr="blah";
+      //test string Character c1= new Character();
+       Scanner kybd = new Scanner(System.in);
+       String rr="blah";
        String con="blah";
        String sloc="blah";
        

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=n\ f\ h\ i\ d
+comment0.target=Food(java.lang.String,\ int,\ int,\ int,\ int)
+comment1.params=itemName\ foodStat
+comment1.target=void\ addFood(java.lang.String,\ int)
+comment2.params=itemName\ foodStat
+comment2.target=void\ removeFood(java.lang.String,\ int)
+comment3.params=
+comment3.target=void\ eat()
+comment4.params=
+comment4.target=void\ digest()
+numComments=5

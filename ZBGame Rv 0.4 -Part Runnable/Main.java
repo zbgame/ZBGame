@@ -8,13 +8,14 @@ public class Main
     
     private Parser parser;
     private Room room;
-    private Character character;
+    private Character c1;// starting character
     private Inventory inventory;
     private Scanner keyboard = new Scanner(System.in);
     public Main()
     {
         this.play();
         //r1.createRooms();
+        c1= new Character("Player", 3,inventory, new KeyRing());// must repair
         parser = new Parser();     
     }
 
@@ -28,8 +29,8 @@ public class Main
         {
             room.getLoc();
             
-                parser.getCommand();
-            gameOver = this.processCommand(command); 
+            
+           // gameOver = this.processCommand(Command); 
         }
         // Player has ended the game via "quit" 
         System.out.println("Thank you for playing. Just remember, there's no \"quit\" button");
@@ -72,7 +73,7 @@ public class Main
     
     private void printWelcome()
     {
-        Character c1 = new Character();
+      //  Character c1 = new Character();
         System.out.println();
         System.out.println("What is your name?");
         c1.setName(keyboard.nextLine());
