@@ -1,12 +1,8 @@
 #BlueJ class context
 comment0.params=d\ a
-comment0.target=Armor(int,\ int)
+comment0.target=Armor(Character,\ int)
 comment1.params=armorName\ armorStat
 comment1.target=void\ addArmor(java.lang.String,\ int)
 comment2.params=armorName\ armorStat
 comment2.target=void\ removeArmor(java.lang.String,\ int)
-comment3.params=
-comment3.target=void\ protect()
-comment4.params=
-comment4.target=void\ broken()
-numComments=5
+numComments=3

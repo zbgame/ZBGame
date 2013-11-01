@@ -1,13 +1,21 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Main()
+comment0.target=void\ generateStuff()
 comment1.params=
-comment1.target=void\ play()
+comment1.target=Main()
 comment2.params=
-comment2.target=void\ printWelcome()
-comment2.text=\r\n\ \ \ \ \ \ String\ callme;\r\n\ \ \ \ \ \ \ \ Scanner\ kybd\ \=\ new\ Scanner(System.in);\r\n\r\n\ \ \ \ \ \ \ \ \ \ System.out.println("Enter\ your\ name\:");\r\n\ \ \ \ \ \ \ \ \ \ \ c1.setName("Bebel"/**kybd.nextLine()\r\n\ \ \ \ \ \ \ \ \ \ \ System.out.println("Welcome\ to\ the\ Zombie\ Academy\ "+\ c1.getName());\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println("private\ "+\ c1.getHitpoints()\ +\ "\ hitpoints.");\ \ \ \ \r\n\ \ \ \ \ \ \ \ \ \ \ System.out.println("Are\ you\ dead?\ "+\ c1.getsDead());\r\n\ \ \ \ \ \ \ \ \ while\ (c1.getHitpoints()>0)\r\n\r\n\r\n\ \ \ \ \ \ \ \ r1.askRoom();\r\n\ \ \ \ \ \ \ \ System.out.println("Room\ \#\ "+\ r1.getRoom());\r\n\ \ \ \ \ \ \ \ r1.setKey();\ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ I1.setTestKey(r1.whichKey());\r\n\ \ \ \ \ \ \ \ System.out.println("Test\ key\:\ "+I1.setKeyName());\r\n\ \ \ \ \ \ \ \ System.out.println(""+r1.enter());\r\n\ \ \ \ \ \ \ \ \ System.out.println(r1.getKey());\r\n\ \ \ \ \ \ \ \ \ r1.setBatl();\r\n\ \ \ \ \ \ \ \ \ System.out.println(r1.getBatl());\r\n\r\n\ \ \ \ \ \ \ \ \ System.out.println("Random\ "+\ r1.get);\r\n\r\n\ \ \ \ \ \ \ \ /**\r\n\ \ \ \ \ \ \ \ c1.getItem();\ \ //weapons\ +\ other\ non\ permanent\ items\r\n\ \ \ \ \ \ \ \ c1.setItem();\ \ \ \ \ \ \ \r\n\r\n\ \ \ \ \ \ \ \ c1.getSoda();\ \ //\ aquire\ and\ gain\ hp\ upon\ use\r\n\ \ \ \ \ \ \ \ c1.setSoda());\r\n\r\n
-comment3.params=command
-comment3.target=boolean\ processCommand(Command)
-comment4.params=
-comment4.target=void\ printHelp()
-numComments=5
+comment2.target=void\ play()
+comment3.params=
+comment3.target=void\ printWelcome()
+comment3.text=\r\n\ \ \ \ \ \ String\ callme;\r\n\ \ \ \ \ \ \ \ Scanner\ kybd\ \=\ new\ Scanner(System.in);\r\n\r\n\ \ \ \ \ \ \ \ \ \ System.out.println("Enter\ your\ name\:");\r\n\ \ \ \ \ \ \ \ \ \ \ c1.setName("Bebel"/**kybd.nextLine()\r\n\ \ \ \ \ \ \ \ \ \ \ System.out.println("Welcome\ to\ the\ Zombie\ Academy\ "+\ c1.getName());\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println("private\ "+\ c1.getHitpoints()\ +\ "\ hitpoints.");\ \ \ \ \r\n\ \ \ \ \ \ \ \ \ \ \ System.out.println("Are\ you\ dead?\ "+\ c1.getsDead());\r\n\ \ \ \ \ \ \ \ \ while\ (c1.getHitpoints()>0)\r\n\r\n\r\n\ \ \ \ \ \ \ \ r1.askRoom();\r\n\ \ \ \ \ \ \ \ System.out.println("Room\ \#\ "+\ r1.getRoom());\r\n\ \ \ \ \ \ \ \ r1.setKey();\ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ I1.setTestKey(r1.whichKey());\r\n\ \ \ \ \ \ \ \ System.out.println("Test\ key\:\ "+I1.setKeyName());\r\n\ \ \ \ \ \ \ \ System.out.println(""+r1.enter());\r\n\ \ \ \ \ \ \ \ \ System.out.println(r1.getKey());\r\n\ \ \ \ \ \ \ \ \ r1.setBatl();\r\n\ \ \ \ \ \ \ \ \ System.out.println(r1.getBatl());\r\n\r\n\ \ \ \ \ \ \ \ \ System.out.println("Random\ "+\ r1.get);\r\n\r\n\ \ \ \ \ \ \ \ /**\r\n\ \ \ \ \ \ \ \ c1.getItem();\ \ //weapons\ +\ other\ non\ permanent\ items\r\n\ \ \ \ \ \ \ \ c1.setItem();\ \ \ \ \ \ \ \r\n\r\n\ \ \ \ \ \ \ \ c1.getSoda();\ \ //\ aquire\ and\ gain\ hp\ upon\ use\r\n\ \ \ \ \ \ \ \ c1.setSoda());\r\n\r\n
+comment4.params=command
+comment4.target=boolean\ processCommand(Command)
+comment5.params=
+comment5.target=void\ printHelp()
+comment6.params=command
+comment6.target=void\ goRoom(Command)
+comment7.params=command
+comment7.target=boolean\ quit(Command)
+comment8.params=command
+comment8.target=void\ use(Command)
+numComments=9

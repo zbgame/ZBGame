@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.params=cname\ hp\ i\ k
-comment0.target=Character(java.lang.String,\ int,\ Inventory,\ KeyRing)
-comment1.params=callme
+comment0.params=hp\ i\ k
+comment0.target=Character(int,\ Inventory,\ KeyRing)
+comment1.params=c
 comment1.target=void\ setName(java.lang.String)
 comment2.params=hp
 comment2.target=void\ setHitpoints(int)

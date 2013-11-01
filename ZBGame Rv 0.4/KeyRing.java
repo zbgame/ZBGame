@@ -1,38 +1,35 @@
+import java.util.Set;
+import java.util.HashMap;
 import java.util.ArrayList;
 /**
  * Patrick Foltyn 10/2013
  */
 public class KeyRing
 {
-    String key;
-    private ArrayList<String> keyring;
+    private ArrayList<Key> keyring;
+    private HashMap<String, Key> keys;
     public KeyRing()
     {
-        ArrayList<String> k1 = new ArrayList<String>();
+        
     }
 
-    public void addKey(String key)
+    public void addKey(Key k)
     {
-        keyring.add(key);
+        keyring.add(k);
     }
 
-    public void setKey(String k)
+    public void use(Key p, Room e)
     {
-       key = k;
+        
     }
-
-    public String getKey()
+    
+    public Key getKey(String keyName) 
     {
-        return key;
+        return keys.get(keyName);
     }
-
-    public boolean checkKeyRing(String key)
+    
+    public void setKey(String keyName, Key key) 
     {
-        for (String k1 : keyring)
-        {
-            if(keyring.equals(key))
-                return true;
-        }     
-        return false;
+        keys.put(keyName, key);
     }
 }

@@ -8,34 +8,63 @@ public class Main
     
     private Parser parser;
     private Room room;
-    private Character c1;// starting character
+    private Character c1;
     private Inventory inventory;
     private Scanner keyboard = new Scanner(System.in);
+    private Room currentRoom;
+    
+    private void generateStuff()
+    {
+        Room outside, buildingA, buildingB, buildingC, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
+      
+        // create the rooms
+        outside = new Room("outside the university", false);
+        buildingA = new Room("in the hallway of Building A", false);
+        buildingB = new Room("in the hallway of Building B", false);
+        buildingC = new Room("in the hallway of Building C", false);
+        a10 = new Room("in room A10", true);
+        
+        
+        // initialise room exits
+        outside.setExit("BuildingA", buildingA);
+        outside.setExit("BuildingB", buildingB);
+        outside.setExit("BuildingC", buildingC);
+
+        buildingA.setExit("A10", a10);
+        
+        KeyRing k1 = new KeyRing();
+        Key a10key = new Key(a10);
+        k1.setKey("a10key", a10key);
+        
+
+        currentRoom = outside;  // start game outside
+        
+        // initialise new player
+        //Player P1 = new Player(5);
+    }
+    
     public Main()
     {
-        this.play();
-        //r1.createRooms();
-        c1= new Character("Player", 3,inventory, new KeyRing());// must repair
-        parser = new Parser();     
+        
+        generateStuff();
+        parser = new Parser();  
     }
 
     public void play() 
     {
-        room = new Room();
-        printWelcome();       
-       
-        boolean gameOver = false;
-        while(!gameOver)
+        c1 = new Character(3, inventory, new KeyRing()); //FIX
+        printWelcome();
+
+        // Enter the main command loop.  Here we repeatedly read commands and
+        // execute them until the game is over.
+                
+        boolean finished = false;
+        while (! finished) 
         {
-            room.getLoc();
-            
-            
-           // gameOver = this.processCommand(Command); 
+            Command command = parser.getCommand();
+            finished = processCommand(command);
         }
-        // Player has ended the game via "quit" 
-        System.out.println("Thank you for playing. Just remember, there's no \"quit\" button");
-        System.out.println("to push when the zombies really attack!");
-        
+        System.out.println("Thank you for playing.  Good bye.");
     }
        /*
       String callme;
@@ -73,18 +102,20 @@ public class Main
     
     private void printWelcome()
     {
-      //  Character c1 = new Character();
+        //Character c1 = new Character();
         System.out.println();
         System.out.println("What is your name?");
         c1.setName(keyboard.nextLine());
         System.out.println("Welcome to the Zombie Academy, " + c1.getName() + ".");
         System.out.println("Enter \"Help\" if you need assistance.");
         System.out.println();
+        System.out.println(currentRoom.getLongDescription());
     }
 
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
+
         if(command.isUnknown()) 
         {
             System.out.println("I don't know what you mean...");
@@ -98,11 +129,15 @@ public class Main
         }
         else if (commandWord.equals("go")) 
         {
-            room.getLoc();
+            goRoom(command);
+        }
+        else if (commandWord.equals("use"))
+        {
+            use(command);
         }
         else if (commandWord.equals("quit")) 
         {
-            //wantToQuit = quit(command);
+            wantToQuit = quit(command);
         }
         // else command not recognised.
         return wantToQuit;
@@ -117,9 +152,36 @@ public class Main
         parser.showCommands();
     }
     
+    private void goRoom(Command command) 
+    {
+        if(!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Go where?");
+            return;
+        }
 
+        String direction = command.getSecondWord();
+
+        // Try to leave current room.
+        Room nextRoom = currentRoom.getExit(direction);
+
+        if (nextRoom == null) 
+        {
+            System.out.println("There is no door!");
+        }
+        else if(nextRoom.getIsLocked() == true)
+        {
+            System.out.println("The door is locked.");
+        }
+        else if(nextRoom.getIsLocked() == false)
+        {
+            currentRoom = nextRoom;
+            System.out.println(currentRoom.getLongDescription());
+        }
+    }
     
-    /**private boolean quit(Command command) 
+    private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) 
         {
@@ -130,6 +192,18 @@ public class Main
         {
             return true;  // signal that we want to quit
         }
-    }*/
+    }
+    
+    private void use(Command command)
+    {
+        if(!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Use what?");
+            return;
+        }
+        
+        
+    }
 }
 

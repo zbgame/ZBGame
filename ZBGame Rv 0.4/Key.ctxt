@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=i
+comment0.target=Key(Room)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Key\r\n
+comment1.params=i
+comment1.target=void\ setRoom(Room)
+comment2.params=
+comment2.target=Room\ getRoom()
+numComments=3

@@ -6,35 +6,28 @@ import java.util.Scanner;
 public class Character 
 {
     private String name;
-    private Scanner keyboard = new Scanner(System.in); 
-    private int health=3;
+    private Scanner keyboard = new Scanner(System.in);
+    private int health = 3;
     private boolean alive; //not used at all
     Inventory i1;
     KeyRing k1;
     
-    public Character(String cname, int hp, Inventory i, KeyRing k)
+    public Character(int hp, Inventory i, KeyRing k)
     {
-        cname = name;
         hp = health;
         i = i1;
         k = k1;
     }
     
-    
-    
-    
     //Setters
-    public void setName(String callme) 
+    public void setName(String c) 
     {
-       System.out.println("What is your character's name?");
-       callme = keyboard.nextLine();
-       
+       name = c;
     }
     
    public void setHitpoints(int hp) 
    {
-       health=hp;
-       //
+       hp = health;
    }
    
    public void retrieveItem(Inventory i)

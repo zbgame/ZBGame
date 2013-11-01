@@ -2,9 +2,9 @@
 comment0.params=character
 comment0.target=void\ fight(java.lang.Class)
 comment1.params=n\ h\ d\ he\ hc
-comment1.target=Battle(java.lang.String,\ int,\ int,\ Item,\ int)
+comment1.target=Zombie(java.lang.String,\ int,\ int,\ Item,\ int)
 comment2.params=z
-comment2.target=Battle(Battle)
+comment2.target=Zombie(Zombie)
 comment3.params=
 comment3.target=java.lang.String\ name()
 comment4.params=

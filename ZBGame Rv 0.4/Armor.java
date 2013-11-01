@@ -4,13 +4,13 @@ import java.util.ArrayList;
 public class Armor extends Item    
 {
     
-    private int defense;  //sw Character vs Characters
+    private Character defense;  //sw Character vs Characters
     private int addedDefense, totalDef;
     private String armorName;
     private int armorStat;
     ArrayList<String> armorRoster = new ArrayList<String>();
     
-    public Armor(int d, int a)
+    public Armor(Character d, int a)
     {
         defense = d;
         addedDefense = a;        
@@ -28,14 +28,14 @@ public class Armor extends Item
         }
     }
     
-    public void protect()
+    /**public void protect()
     {
-        totalDef = defense + armorStat;
+        totalDef = defense += armorStat;
         System.out.println(totalDef + " has been added to your defense stat");
     }       
     public void broken()
     {
         totalDef = defense -= armorStat;
         System.out.println(totalDef + " has been removed to your defense stat");
-    }
+    }*/
 }

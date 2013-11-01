@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Food extends Item{  
 
 private String itemName;
-private int foodStat, increasedHealth, decreasedHealth;
-private int health;
+private int foodStat, increasedHealth, decreasedHealth, health;
 ArrayList<String> foodStuff = new ArrayList<String>();
 
 public Food(String n, int f, int h, int i, int d)
@@ -15,7 +14,7 @@ public Food(String n, int f, int h, int i, int d)
   decreasedHealth = d;
   itemName = n;
   foodStat = f;
-  health=h;
+  health = h;
 }
     public void addFood(String itemName, int foodStat){
         {

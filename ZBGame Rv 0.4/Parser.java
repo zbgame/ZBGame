@@ -8,7 +8,6 @@ import java.util.Scanner;
  */
 public class Parser 
 {
-    private Character character;
     private CommandWords commands;  // holds all valid command words
     private Scanner reader;         // source of command input
 
@@ -21,6 +20,9 @@ public class Parser
         reader = new Scanner(System.in);
     }
 
+    /**
+     * @return The next command from the user.
+     */
     public Command getCommand() 
     {
         String inputLine;   // will hold the full input line
@@ -35,14 +37,13 @@ public class Parser
         Scanner tokenizer = new Scanner(inputLine);
         if(tokenizer.hasNext()) 
         {
-            word1 = tokenizer.next(); 
-        }     // get first word
-        if(tokenizer.hasNext()) 
-        {
-            word2 = tokenizer.next();  
-        }    // get second word
-        // note: we just ignore the rest of the input line.
-
+            word1 = tokenizer.next();      // get first word
+            if(tokenizer.hasNext()) 
+            {
+                word2 = tokenizer.next();      // get second word
+                // note: we just ignore the rest of the input line.
+            }
+        }
 
         // Now check whether this word is known. If so, create a command
         // with it. If not, create a "null" command (for unknown command).
