@@ -10,7 +10,7 @@ public class KeyRing
     private HashMap<String, Key> keys;
     public KeyRing()
     {
-        
+        keys = new HashMap<String, Key>();
     }
 
     public void addKey(Key k)

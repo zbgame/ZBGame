@@ -23,14 +23,110 @@ public class Main
         buildingB = new Room("in the hallway of Building B", false);
         buildingC = new Room("in the hallway of Building C", false);
         a10 = new Room("in room A10", true);
+        a11 = new Room("in room A11", false);
+        a12 = new Room("in room A12", false);
+        a13 = new Room("in room A13", false);
+        a14 = new Room("in room A14", false);
+        a15 = new Room("in room A15", false);
+        a16 = new Room("in room A16", false);
+        a17 = new Room("in room A17", false);
+        a18 = new Room("in room A18", false);
+        a19 = new Room("in room A19", false);
+        b10 = new Room("in room B10", false);
+        b11 = new Room("in room B11", false);
+        b12 = new Room("in room B12", false);
+        b13 = new Room("in room B13", false);
+        b14 = new Room("in room B14", false);
+        b15 = new Room("in room B15", false);
+        b16 = new Room("in room B16", false);
+        b17 = new Room("in room B17", false);
+        b18 = new Room("in room B18", false);
+        b19 = new Room("in room B19", false);
+        c10 = new Room("in room C10", false);
+        c11 = new Room("in room C11", false);
+        c12 = new Room("in room C12", false);
+        c13 = new Room("in room C13", false);
+        c14 = new Room("in room C14", false);
+        c15 = new Room("in room C15", false);
+        c16 = new Room("in room C16", false);
+        c17 = new Room("in room C17", false);
+        c18 = new Room("in room C18", false);
+        c19 = new Room("in room C19", false);
         
         
         // initialise room exits
-        outside.setExit("BuildingA", buildingA);
-        outside.setExit("BuildingB", buildingB);
-        outside.setExit("BuildingC", buildingC);
+        outside.setExit("buildinga", buildingA);
+        outside.setExit("buildingb", buildingB);
+        outside.setExit("buildingc", buildingC);
 
-        buildingA.setExit("A10", a10);
+        buildingA.setExit("outside", outside);
+        buildingA.setExit("a10", a10);
+        buildingA.setExit("a11", a11);
+        buildingA.setExit("a12", a12);
+        buildingA.setExit("a13", a13);
+        buildingA.setExit("a14", a14);
+        buildingA.setExit("a15", a15);
+        buildingA.setExit("a16", a16);
+        buildingA.setExit("a17", a17);
+        buildingA.setExit("a18", a18);
+        buildingA.setExit("a19", a19);
+        
+        buildingB.setExit("outside", outside);
+        buildingB.setExit("b10", b10);
+        buildingB.setExit("b11", b11);
+        buildingB.setExit("b12", b12);
+        buildingB.setExit("b13", b13);
+        buildingB.setExit("b14", b14);
+        buildingB.setExit("b15", b15);
+        buildingB.setExit("b16", b16);
+        buildingB.setExit("b17", b17);
+        buildingB.setExit("b18", b18);
+        buildingB.setExit("b19", b19);
+        
+        buildingC.setExit("outside", outside);
+        buildingC.setExit("c10", c10);
+        buildingC.setExit("c11", c11);
+        buildingC.setExit("c12", c12);
+        buildingC.setExit("c13", c13);
+        buildingC.setExit("c14", c14);
+        buildingC.setExit("c15", c15);
+        buildingC.setExit("c16", c16);
+        buildingC.setExit("c17", c17);
+        buildingC.setExit("c18", c18);
+        buildingC.setExit("c19", c19);
+        
+        a10.setExit("hallway", buildingA);
+        a11.setExit("hallway", buildingA);
+        a12.setExit("hallway", buildingA);
+        a13.setExit("hallway", buildingA);
+        a14.setExit("hallway", buildingA);
+        a15.setExit("hallway", buildingA);
+        a16.setExit("hallway", buildingA);
+        a17.setExit("hallway", buildingA);
+        a18.setExit("hallway", buildingA);
+        a19.setExit("hallway", buildingA);
+        
+        b10.setExit("hallway", buildingB);
+        b11.setExit("hallway", buildingB);
+        b12.setExit("hallway", buildingB);
+        b13.setExit("hallway", buildingB);
+        b14.setExit("hallway", buildingB);
+        b15.setExit("hallway", buildingB);
+        b16.setExit("hallway", buildingB);
+        b17.setExit("hallway", buildingB);
+        b18.setExit("hallway", buildingB);
+        b19.setExit("hallway", buildingB);
+        
+        c10.setExit("hallway", buildingC);
+        c11.setExit("hallway", buildingC);
+        c12.setExit("hallway", buildingC);
+        c13.setExit("hallway", buildingC);
+        c14.setExit("hallway", buildingC);
+        c15.setExit("hallway", buildingC);
+        c16.setExit("hallway", buildingC);
+        c17.setExit("hallway", buildingC);
+        c18.setExit("hallway", buildingC);
+        c19.setExit("hallway", buildingC);
         
         KeyRing k1 = new KeyRing();
         Key a10key = new Key(a10);
@@ -66,39 +162,6 @@ public class Main
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
-       /*
-      String callme;
-        Scanner kybd = new Scanner(System.in);
-
-          System.out.println("Enter your name:");
-           c1.setName("Bebel"/**kybd.nextLine()
-           System.out.println("Welcome to the Zombie Academy "+ c1.getName());
-            System.out.println("private "+ c1.getHitpoints() + " hitpoints.");    
-           System.out.println("Are you dead? "+ c1.getsDead());
-         while (c1.getHitpoints()>0)
-
-
-        r1.askRoom();
-        System.out.println("Room # "+ r1.getRoom());
-        r1.setKey();       
-        I1.setTestKey(r1.whichKey());
-        System.out.println("Test key: "+I1.setKeyName());
-        System.out.println(""+r1.enter());
-         System.out.println(r1.getKey());
-         r1.setBatl();
-         System.out.println(r1.getBatl());
-
-         System.out.println("Random "+ r1.get);
-        *
-        /**
-        c1.getItem();  //weapons + other non permanent items
-        c1.setItem();       
-
-        c1.getSoda();  // aquire and gain hp upon use
-        c1.setSoda());
-
-         */
-
     
     private void printWelcome()
     {
