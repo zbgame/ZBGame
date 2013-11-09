@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=
+comment0.target=DummyItem()
+comment0.text=\r\n\ this\ item\ will\ be\ used\ as\ a\ stand\ in\ for\ items\ in\ room\ if\ putting\ whole\ items\ takes\ up\ to\ much\ space\ in\ memory,\r\n\ it\ will\ have\ a\ custom\ pickUp()\ function\ to\ add\ quantity\ to\ an\ item\ in\ inventory\ with\ the\ same\ name\r\n\ not\ necissarily\ going\ to\ be\ used,\ just\ putting\ it\ in\ for\ testing\r\n
+comment1.params=
+comment1.target=void\ pickUp()
+numComments=2

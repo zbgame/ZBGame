@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=hp\ i
+comment0.target=Player(int,\ Inventory)
+comment1.params=c
+comment1.target=void\ setName(java.lang.String)
+comment2.params=hp
+comment2.target=void\ setHitpoints(int)
+comment3.params=i
+comment3.target=void\ retrieveItem(Inventory)
+comment4.params=i
+comment4.target=void\ useItem(Inventory)
+comment5.params=
+comment5.target=java.lang.String\ getName()
+comment6.params=
+comment6.target=int\ getHitpoints()
+comment7.params=
+comment7.target=java.lang.String\ getDescription()
+numComments=8

@@ -1,7 +1,4 @@
 import java.util.Scanner;
-
-
-
 /*
  * author: John Jones
  * version(so parse. much rare. coded best)
@@ -65,6 +62,4 @@ public class Parser
         commands.showAll();
     }
 
-  
 }
-
