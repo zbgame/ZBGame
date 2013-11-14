@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
-
+import java.util.LinkedHashMap;
 /**
  * Write a description of class room here.
  * 
@@ -11,11 +11,10 @@ import java.util.HashMap;
 public class Room
 {
     // instance variables - replace the example below with your own
-    private ArrayList[] ItemsInRoom;
+    private HashMap<String, Item> ItemsInRoom;
     private String description;
     private HashMap<String, Room> exits;
     boolean isLocked;
-    
 
     /**
      * Constructor for objects of class room
@@ -24,7 +23,8 @@ public class Room
     {
         // initialise instance variables
         this.description = description;
-        exits = new HashMap<String, Room>();
+        ItemsInRoom = new LinkedHashMap<String, Item>();
+        exits = new LinkedHashMap<String, Room>();
         isLocked = l;
     }
 
@@ -37,7 +37,7 @@ public class Room
     {
         exits.put(direction, neighbor);
     }
-    
+
     /**
      * @return The short description of the room
      * (the one that was defined in the constructor).
@@ -46,18 +46,19 @@ public class Room
     {
         return description;
     }
-    
+
     /**
      * Return a description of the room in the form:
      *     You are in the kitchen.
      *     Exits: north west
+     *     You see: A10 Key
      * @return A long description of this room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getExitString()+".\n"+getItemString();
     }
-    
+
     /**
      * Return a string describing the room's exits, for example
      * "Exits: north west".
@@ -73,7 +74,7 @@ public class Room
         }
         return returnString;
     }
-    
+
     /**
      * Return the room that is reached if we go from this room in direction
      * "direction". If there is no room in that direction, return null.
@@ -84,14 +85,36 @@ public class Room
     {
         return exits.get(direction);
     }
-    
+
     public boolean getIsLocked()
     {
         return isLocked;
     }
-    
+
     public void setIsLocked(boolean l)
     {
         isLocked = l;
+    }
+    
+    public String getItemString()
+    {
+        String returnString = "You see ";
+        Set<String> keys = ItemsInRoom.keySet();
+        for(String ItemsInRoom : keys) 
+        {
+            returnString += ItemsInRoom + " ";
+        }
+        returnString += "in the room.";
+        return returnString;
+    }
+    
+    public Item getItemsInRoom(String item) 
+    {
+        return ItemsInRoom.get(item);
+    }
+    
+    public void setItemsInRoom(Item item) 
+    {
+        ItemsInRoom.put(item.getName(), item);
     }
 }

@@ -17,4 +17,6 @@ comment7.params=command
 comment7.target=boolean\ quit(Command)
 comment8.params=command
 comment8.target=void\ use(Command)
-numComments=9
+comment9.params=command
+comment9.target=void\ look(Command)
+numComments=10

@@ -1,8 +1,4 @@
 #BlueJ class context
-comment0.params=s\ a
-comment0.target=Weapon(Character,\ int)
-comment1.params=weaponName\ weaponStat
-comment1.target=void\ addWeapon(java.lang.String,\ int)
-comment2.params=weaponName\ weaponStat
-comment2.target=void\ removeWeapon(java.lang.String,\ int)
-numComments=3
+comment0.params=
+comment0.target=Weapon()
+numComments=1
