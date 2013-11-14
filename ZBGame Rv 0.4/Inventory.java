@@ -1,63 +1,39 @@
-import java.util.Set;
-import java.util.HashMap;
-import java.util.ArrayList;
 /**@author Blacklotus3
  */
 public class Inventory 
 {
-    private HashMap<String, Item> items;
-    private Player theGuy;
-    private Room currentRoom;
+   String Key="blue";
+   String TestKey="";
+   public void setInvKey()
+           {  Key=Key+"";}
+   public void setTestKey(String mainfeed)
+   {TestKey=mainfeed; }
+   public String setKeyName()
+   {if (TestKey.equals("0"))
+           {return "None";}
+   if (TestKey.equals("1"))
+           {return "White";}
+   if (TestKey.equals("2"))
+           {return "Blue";}
+   if (TestKey.equals("3"))
+           {return "Green";}
+   if (TestKey.equals("4"))
+           {return "Yellow";}
+   if (TestKey.equals("5"))
+           {return "Orange";}
+   if (TestKey.equals("Red"))
+           {return "Black";}
+   if (TestKey.equals("7"))
+           {return "Silver";}
+   if (TestKey.equals("8"))
+           {return "Gold";}
+   else 
+           {return "Master";}
 
-    public Inventory(Player p, Room r)
-    {
-        theGuy = p;
-        currentRoom = r;
-        items = new HashMap<String, Item>();
-    }
-
-    public void use(Item m)
-    {
-        
-    }
-
-    public Item getItem(String itemName) 
-    {
-        return items.get(itemName);
-    }
-
-    public void setItem(Item item) 
-    {
-        items.put(item.getName(), item);
-    }
-
-    public Player getPlayer()
-    {
-        return theGuy;
-    }
-
-    public void setRoom(Room r)
-    {
-        currentRoom = r;
-    }
-
-    public Room getRoom()
-    {
-        return currentRoom;
-    }
-
-    public String getItemString()
-    {
-        String returnString = "You have";
-        Set<String> keys = items.keySet();
-        for(String item : keys) 
-        {
-            if(getItem(item).getQuantity()>0)
-            {
-                returnString += " " + item;
-            }
-        }
-        returnString += " in your inventory.";
-        return returnString;
-    }
+   }
+   public String getInvKey()
+           { return Key;}
+   public String getTestKey()
+   {return TestKey;}
+  
 }

@@ -5,18 +5,18 @@ import java.util.Scanner;
  */
 public class Main 
 {
-
+    
     private Parser parser;
     private Room room;
-    private Player p1;
+    private Character c1;
+    private Inventory inventory;
     private Scanner keyboard = new Scanner(System.in);
     private Room currentRoom;
-    Inventory i1 = new Inventory(p1, currentRoom);
-
+    
     private void generateStuff()
     {
         Room outside, buildingA, buildingB, buildingC, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
-
+      
         // create the rooms
         outside = new Room("outside the university", false);
         buildingA = new Room("in the hallway of Building A", false);
@@ -52,7 +52,8 @@ public class Main
         c17 = new Room("in room C17", false);
         c18 = new Room("in room C18", false);
         c19 = new Room("in room C19", false);
-
+        
+        
         // initialise room exits
         outside.setExit("buildinga", buildingA);
         outside.setExit("buildingb", buildingB);
@@ -69,7 +70,7 @@ public class Main
         buildingA.setExit("a17", a17);
         buildingA.setExit("a18", a18);
         buildingA.setExit("a19", a19);
-
+        
         buildingB.setExit("outside", outside);
         buildingB.setExit("b10", b10);
         buildingB.setExit("b11", b11);
@@ -81,7 +82,7 @@ public class Main
         buildingB.setExit("b17", b17);
         buildingB.setExit("b18", b18);
         buildingB.setExit("b19", b19);
-
+        
         buildingC.setExit("outside", outside);
         buildingC.setExit("c10", c10);
         buildingC.setExit("c11", c11);
@@ -93,7 +94,7 @@ public class Main
         buildingC.setExit("c17", c17);
         buildingC.setExit("c18", c18);
         buildingC.setExit("c19", c19);
-
+        
         a10.setExit("hallway", buildingA);
         a11.setExit("hallway", buildingA);
         a12.setExit("hallway", buildingA);
@@ -104,7 +105,7 @@ public class Main
         a17.setExit("hallway", buildingA);
         a18.setExit("hallway", buildingA);
         a19.setExit("hallway", buildingA);
-
+        
         b10.setExit("hallway", buildingB);
         b11.setExit("hallway", buildingB);
         b12.setExit("hallway", buildingB);
@@ -115,7 +116,7 @@ public class Main
         b17.setExit("hallway", buildingB);
         b18.setExit("hallway", buildingB);
         b19.setExit("hallway", buildingB);
-
+        
         c10.setExit("hallway", buildingC);
         c11.setExit("hallway", buildingC);
         c12.setExit("hallway", buildingC);
@@ -126,57 +127,49 @@ public class Main
         c17.setExit("hallway", buildingC);
         c18.setExit("hallway", buildingC);
         c19.setExit("hallway", buildingC);
+        
+        KeyRing k1 = new KeyRing();
+        Key a10key = new Key(a10);
+        k1.setKey("a10key", a10key);
+        
 
         currentRoom = outside;  // start game outside
-        i1.setRoom(currentRoom);
         
-        Key a10key = new Key(a10, "a10");
-        a10key.setName("a10key");
-        a10key.setQuantity(1);
-        
-        //add items to inventory
-        i1.setItem(a10key);
-        
-        DummyItem ietm = new DummyItem();
-        ietm.setName("TheStuff");
-        outside.setItemsInRoom(ietm);
-
         // initialise new player
         //Player P1 = new Player(5);
     }
-
+    
     public Main()
     {
-
+        
         generateStuff();
         parser = new Parser();  
     }
 
     public void play() 
     {
-        p1 = new Player(3, i1); //FIX
+        c1 = new Character(3, inventory, new KeyRing()); //FIX
         printWelcome();
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-
+                
         boolean finished = false;
         while (! finished) 
         {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            //Somewhere in this loop the program will check if a zombie is in the room and call the zombie behavior method
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
-
+    
     private void printWelcome()
     {
+        //Character c1 = new Character();
         System.out.println();
         System.out.println("What is your name?");
-        System.out.print("> ");
-        p1.setName(keyboard.nextLine());
-        System.out.println("Welcome to the Zombie Academy, " + p1.getName() + ".");
+        c1.setName(keyboard.nextLine());
+        System.out.println("Welcome to the Zombie Academy, " + c1.getName() + ".");
         System.out.println("Enter \"Help\" if you need assistance.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -209,14 +202,10 @@ public class Main
         {
             wantToQuit = quit(command);
         }
-        else if (commandWord.equals("look"))
-        {
-            look(command);
-        }
         // else command not recognised.
         return wantToQuit;
     }
-
+    
     private void printHelp() 
     {
         System.out.println("Your objective is to survive the");
@@ -225,7 +214,7 @@ public class Main
         System.out.println("Your command words are:");
         parser.showCommands();
     }
-
+    
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) 
@@ -251,11 +240,10 @@ public class Main
         else if(nextRoom.getIsLocked() == false)
         {
             currentRoom = nextRoom;
-            i1.setRoom(currentRoom);
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
+    
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) 
@@ -268,43 +256,17 @@ public class Main
             return true;  // signal that we want to quit
         }
     }
-
+    
     private void use(Command command)
     {
-        String item = command.getSecondWord();
-        Item useThis = i1.getItem(item);
-        
         if(!command.hasSecondWord()) 
         {
-            // if there is no second word, we don't know what to use...
+            // if there is no second word, we don't know where to go...
             System.out.println("Use what?");
             return;
         }
         
-        if(useThis == null)
-        {
-            System.out.println("You don't have that!");
-        }
-        else
-        {
-            i1.use(i1.getItem(item));
-        }
-    }
-
-    private void look(Command command)
-    {
-        String secondWord = command.getSecondWord();
-        if(!command.hasSecondWord()) 
-        {
-            // if there is no second word, we look in the current room
-            System.out.println(currentRoom.getLongDescription());
-        }
         
-        else if(secondWord.equals("self"))
-        {
-            System.out.println(p1.getDescription());
-        }
-
     }
 }
 
