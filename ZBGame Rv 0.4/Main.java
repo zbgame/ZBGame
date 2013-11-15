@@ -1,31 +1,27 @@
 import java.util.Scanner;
-/** @author Blacklotus3 
+/** @author Zachary Molisee
  * edited by John Jones
- * donkest version ever
+ * doubly donkest version ever
  */
 public class Main 
 {
 
     private Parser parser;
-    private Room room;
-    private Player p1;
+    private Player p1 = new Player(5);
     private Scanner keyboard = new Scanner(System.in);
     private Room currentRoom;
     Inventory i1 = new Inventory(p1, currentRoom);
 
-    private void generateStuff()
+    private void generateStuff()//Zaq: Current means of manually generating all the instances in the game and setting values like exits, items, and enemies
     {
-        Room outside, buildingA, buildingB, buildingC, 
-        a10, a11, a12, a13, a14, a15, a16, a17, a18, a19,
-        b10, b11, b12, b13, b14, b15, b16, b17, b18, b19,
-        c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
-        
+        Room outside, buildingA, buildingB, buildingC, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
+
         // create the rooms
         outside = new Room("outside the university", false);
         buildingA = new Room("in the hallway of Building A", false);
         buildingB = new Room("in the hallway of Building B", false);
         buildingC = new Room("in the hallway of Building C", false);
-        a10 = new Room("in room A10", true);
+        a10 = new Room("in room A10", false);
         a11 = new Room("in room A11", false);
         a12 = new Room("in room A12", false);
         a13 = new Room("in room A13", false);
@@ -55,8 +51,8 @@ public class Main
         c17 = new Room("in room C17", false);
         c18 = new Room("in room C18", false);
         c19 = new Room("in room C19", false);
+
         // initialise room exits
-        
         outside.setExit("buildinga", buildingA);
         outside.setExit("buildingb", buildingB);
         outside.setExit("buildingc", buildingC);
@@ -132,31 +128,47 @@ public class Main
 
         currentRoom = outside;  // start game outside
         i1.setRoom(currentRoom);
-        
-        Key a10key = new Key(a10, "a10");
+
+        Key a10key = new Key(a10);
         a10key.setName("a10key");
         a10key.setQuantity(1);
-        
+
+        Weapon fists = new Weapon(1, true, false, "pummel them with your fists");
+        fists.setName("fists");
+        fists.setQuantity(1);
+
         //add items to inventory
         i1.setItem(a10key);
-        
-        DummyItem ietm = new DummyItem();
+        i1.setItem(fists);
+
+        Item ietm = new Item();
         ietm.setName("TheStuff");
         outside.setItemsInRoom(ietm);
 
-        // initialise new player
-        //Player P1 = new Player(5);
+        //add enemies
+        Enemy itsHim = new Enemy("Him!","an enemy", 5);
+
+        //add attacks
+        Attack doNothing = new Attack("does nothing...", 0);//Zaq: First attack should always be a do nothing type of attack
+        Attack doRub = new Attack("brushes against you, ouch.", 1);
+        itsHim.addAttack(doNothing);
+        itsHim.addAttack(doRub);
+
+        //put enemies in rooms
+        a10.setEnemy(itsHim);
+
+        p1.setInventory(i1);
     }
 
     public Main()
     {
+
         generateStuff();
         parser = new Parser();  
     }
 
     public void play() 
     {
-        p1 = new Player(3, i1); //FIX
         printWelcome();
 
         // Enter the main command loop.  Here we repeatedly read commands and
@@ -167,7 +179,16 @@ public class Main
         {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            //Somewhere in this loop the program will check if a zombie is in the room and call the zombie behavior method
+            if(!currentRoom.roomHasEnemy()){}
+            else if(currentRoom.getEnemy().getHealth() > 0)//Zaq: If an enemy is in the room, this if calls for it to do something
+            {
+                currentRoom.getEnemy().getBehavior(p1);
+            }
+            if(p1.getHitpoints() <= 0)//Zaq: Checks if player has died
+            {
+                finished = true;
+                System.out.println("You have died.");
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -228,7 +249,7 @@ public class Main
         parser.showCommands();
     }
 
-    private void goRoom(Command command) 
+    private void goRoom(Command command) //Zaq: Modified go method from zuul's, now accounts for locked doors and sends currentRoom to inventory for item interactions
     {
         if(!command.hasSecondWord()) 
         {
@@ -271,18 +292,17 @@ public class Main
         }
     }
 
-    private void use(Command command)
+    private void use(Command command)//Zaq: New use method that calls for an item to be used using an overidden/overloaded item use() function called from inventory
     {
         String item = command.getSecondWord();
         Item useThis = i1.getItem(item);
-        
+
         if(!command.hasSecondWord()) 
         {
             // if there is no second word, we don't know what to use...
             System.out.println("Use what?");
             return;
         }
-        
         if(useThis == null)
         {
             System.out.println("You don't have that!");
@@ -293,10 +313,10 @@ public class Main
         }
     }
 
-    private void look(Command command)
+    private void look(Command command)//Zaq: New look command, allows players to survey their surroundings and gather information about the game world
     {
         String secondWord = command.getSecondWord();
-        if(!command.hasSecondWord())
+        if(!command.hasSecondWord()) 
         {
             // if there is no second word, we look in the current room
             System.out.println(currentRoom.getLongDescription());

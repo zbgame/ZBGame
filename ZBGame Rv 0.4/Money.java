@@ -16,15 +16,14 @@ public class Money extends Item
         return wallet;
     }
 
-    public void addMenoy(double i)
+    public void setMenoy(double i)
     {
-        wallet = wallet + i;
+        wallet = i;
     }
 
-    public void subtarctMoneh(double q)
+    public void pickUp(Money i)
     {
-        wallet = wallet - q;
+        wallet = (wallet + i.getMoney());
     }
 }  
-
 

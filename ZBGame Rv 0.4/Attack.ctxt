@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=d\ a
+comment0.target=Attack(java.lang.String,\ int)
+comment1.params=
+comment1.target=java.lang.String\ getDescription()
+comment2.params=
+comment2.target=int\ getDamage()
+numComments=3

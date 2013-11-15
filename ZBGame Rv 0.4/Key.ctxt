@@ -1,15 +1,10 @@
 #BlueJ class context
-comment0.params=i\ s
-comment0.target=Key(Room,\ java.lang.String)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Key\r\n
+comment0.params=i
+comment0.target=Key(Room)
 comment1.params=i
 comment1.target=void\ setRoom(Room)
 comment2.params=
 comment2.target=Room\ getRoom()
-comment3.params=s
-comment3.target=void\ setDeriction(java.lang.String)
-comment4.params=
-comment4.target=java.lang.String\ getDeriction()
-comment5.params=
-comment5.target=void\ use()
-numComments=6
+comment3.params=r
+comment3.target=void\ use(Room)
+numComments=4

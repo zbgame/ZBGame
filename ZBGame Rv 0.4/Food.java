@@ -16,7 +16,7 @@ public class Food extends Item
     public void removeFood(String itemName, int foodStat)
     {
         {
-            
+
         }
     }
 
@@ -31,7 +31,7 @@ public class Food extends Item
         decreasedHealth = health -= foodStat;
         System.out.println(decreasedHealth + " has been subtracted from your HP");
     }
-    
+
     public void use(Inventory i)
     {
         i.getPlayer().setHitpoints(i.getPlayer().getHitpoints()+increasedHealth);

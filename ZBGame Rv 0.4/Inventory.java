@@ -1,7 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.ArrayList;
-/**@author Blacklotus3
+/**@author Patrick Foltyn
  */
 public class Inventory 
 {
@@ -18,7 +18,18 @@ public class Inventory
 
     public void use(Item m)
     {
-        
+        if(m instanceof Key && m.getQuantity()>0)
+        {
+            ((Key)m).use(currentRoom);
+        }
+        if(m instanceof Food && m.getQuantity()>0)
+        {
+            ((Food)m).use();
+        }
+        if(m instanceof Weapon && m.getQuantity()>0)
+        {
+            ((Weapon)m).use(theGuy, currentRoom.getEnemy(), currentRoom);
+        }
     }
 
     public Item getItem(String itemName) 
@@ -31,6 +42,11 @@ public class Inventory
         items.put(item.getName(), item);
     }
 
+    public void setPlayer(Player p)
+    {
+        theGuy = p;
+    }
+    
     public Player getPlayer()
     {
         return theGuy;

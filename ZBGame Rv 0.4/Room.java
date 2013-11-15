@@ -15,6 +15,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;
     boolean isLocked;
+    Enemy killMe;
 
     /**
      * Constructor for objects of class room
@@ -51,12 +52,11 @@ public class Room
      * Return a description of the room in the form:
      *     You are in the kitchen.
      *     Exits: north west
-     *     You see: A10 Key
      * @return A long description of this room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString()+".\n"+getItemString();
+        return "You are " + description + ".\n" + getExitString()+".\n"+getThingsString();//Zaq: Modified to return items in room
     }
 
     /**
@@ -95,26 +95,66 @@ public class Room
     {
         isLocked = l;
     }
-    
-    public String getItemString()
+
+    public String getThingsString()//Zaq: Much like get exits, returns string of items in room
     {
-        String returnString = "You see ";
-        Set<String> keys = ItemsInRoom.keySet();
-        for(String ItemsInRoom : keys) 
+        if(ItemsInRoom.isEmpty() && killMe == null)
         {
-            returnString += ItemsInRoom + " ";
+            return "You see nothing in the room";
         }
-        returnString += "in the room.";
-        return returnString;
+        else
+        {
+            String returnString = "You see";
+            Set<String> keys = ItemsInRoom.keySet();
+            for(String ItemsInRoom : keys) 
+            {
+                returnString += " " + ItemsInRoom;
+            }
+            if(killMe == null){}
+            else if(killMe.getHealth() <= 0)
+            {
+                returnString += " the corpse of " + killMe.getName();
+            }
+            else if(killMe != null)
+            {
+                returnString += " " + killMe.getName();
+            }
+            returnString += " in the room.";
+            return returnString;
+        }
     }
-    
-    public Item getItemsInRoom(String item) 
+
+    public Item getItemsInRoom(String item) //Zaq: Gets an instance of an item in the room
     {
         return ItemsInRoom.get(item);
     }
-    
-    public void setItemsInRoom(Item item) 
+
+    public void setItemsInRoom(Item item) //Zaq: Sets items into the room hashmap using their name as a reference key
     {
         ItemsInRoom.put(item.getName(), item);
+    }
+
+    public void setEnemy(Enemy e)
+    {
+        killMe = e;
+    }
+
+    public Enemy getEnemy()
+    {
+        return killMe;
+    }
+
+    public boolean roomHasEnemy()
+    {
+        if(killMe != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public HashMap returnExits()//Zaq: Returns a hashmap of exits for items to analize for certain room conditions
+    {
+        return exits;
     }
 }

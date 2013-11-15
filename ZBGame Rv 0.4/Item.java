@@ -46,7 +46,7 @@ public class Item    //sbw eliminated inner class Item  2013 10 17  1600
     
     public void use()
     {
-        
+        System.out.println("You can't use that...\nYet!");
     }
     
     public void pickUp()
