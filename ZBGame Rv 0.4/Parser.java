@@ -7,7 +7,7 @@ public class Parser
 {
     private CommandWords commands;  // holds all valid command words
     private Scanner reader;         // source of command input
-
+    private String inputLine;
     /**
      * Create a parser to read from the terminal window.
      */
@@ -22,7 +22,7 @@ public class Parser
      */
     public Command getCommand() 
     {
-        String inputLine;   // will hold the full input line
+       // String inputLine;   // will hold the full input line
         String word1 = null;
         String word2 = null;
 
@@ -53,7 +53,12 @@ public class Parser
             return new Command(null, word2); 
         }
     }
-
+    // method needed to tell user it doesn't know how to do what he/she said
+    public String getInput()
+    {
+        return inputLine; 
+    }
+    
     /**
      * Print out a list of valid command words.
      */

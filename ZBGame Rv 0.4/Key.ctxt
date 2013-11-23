@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=i
-comment0.target=Key(Room)
+comment0.params=n\ e\ q\ i
+comment0.target=Key(java.lang.String,\ java.lang.String,\ int,\ Room)
 comment1.params=i
 comment1.target=void\ setRoom(Room)
 comment2.params=

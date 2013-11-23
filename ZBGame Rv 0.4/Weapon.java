@@ -3,15 +3,17 @@ public class Weapon extends Item
     private int attackModifier;//increase the players attack by this much when the attack function is called
     private boolean doesAttackStack = true;//can be used to over ride players attack stat and only use weapons attack, guns do not use any of your own physical strength
     private boolean isEquiped = false;//will be called when using the equip function and when checking attacks to make sure it increases player damage (Not necessary, left in for testing, remove at a later date)
-    private boolean usesAmmo = false;//determines if a weapon needs ammo to use, gun vs knife
-    private int ammo = 0;//counts ammo down when used
+    private boolean usesAmmo = false;//determines if a weapon needs ammo to use, gun vs knife(getting removed)
+    private int ammo = 0;//counts ammo down when used(getting removed)
     private String attackDescriptor;//describes the type of attack this weapon will perform
 
-    public Weapon(int a, boolean s, boolean u, String d)
+    public Weapon(String n, String e, int q, int a, boolean s,  String d)
     {
+        super.setName(n);
+        super.setDescription(e);
+        super.setQuantity(q);
         attackModifier = a;
         doesAttackStack = s;
-        usesAmmo = u;
         attackDescriptor = d;
     }
 
@@ -55,7 +57,7 @@ public class Weapon extends Item
         attackDescriptor = d;
     }
 
-    public void use(Player p, Enemy e, Room r)
+    public void use(Player p, Zombie e)
     {
         if(e.getHealth() <= 0)
         {

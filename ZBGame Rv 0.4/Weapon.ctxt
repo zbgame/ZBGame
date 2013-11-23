@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=a\ s\ u\ d
-comment0.target=Weapon(int,\ boolean,\ boolean,\ java.lang.String)
+comment0.params=n\ e\ q\ a\ s\ d
+comment0.target=Weapon(java.lang.String,\ java.lang.String,\ int,\ int,\ boolean,\ java.lang.String)
 comment1.params=
 comment1.target=int\ getAttackModifier()
 comment2.params=m
@@ -17,6 +17,6 @@ comment7.params=
 comment7.target=java.lang.String\ getAttackDescriptor()
 comment8.params=d
 comment8.target=void\ setAttackDescriptor(java.lang.String)
-comment9.params=p\ e\ r
-comment9.target=void\ use(Player,\ Enemy,\ Room)
+comment9.params=p\ e
+comment9.target=void\ use(Player,\ Zombie)
 numComments=10

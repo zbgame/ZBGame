@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Random;
 /**
  * Write a description of class room here.
  * 
@@ -15,7 +16,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;
     boolean isLocked;
-    Enemy killMe;
+    Zombie killMe;
 
     /**
      * Constructor for objects of class room
@@ -113,11 +114,11 @@ public class Room
             if(killMe == null){}
             else if(killMe.getHealth() <= 0)
             {
-                returnString += " the corpse of " + killMe.getName();
+                returnString += " the corpse of " + killMe.name();
             }
             else if(killMe != null)
             {
-                returnString += " " + killMe.getName();
+                returnString += " " + killMe.name();
             }
             returnString += " in the room.";
             return returnString;
@@ -134,12 +135,17 @@ public class Room
         ItemsInRoom.put(item.getName(), item);
     }
 
-    public void setEnemy(Enemy e)
+    public void removeItemFromRoom(String item)
+    {
+        ItemsInRoom.remove(item);
+    }
+
+    public void setEnemy(Zombie e)
     {
         killMe = e;
     }
 
-    public Enemy getEnemy()
+    public Zombie getEnemy()
     {
         return killMe;
     }
@@ -156,5 +162,21 @@ public class Room
     public HashMap returnExits()//Zaq: Returns a hashmap of exits for items to analize for certain room conditions
     {
         return exits;
+    }
+
+    public String look(String name)
+    {
+        Random rand = new Random();
+        int n = rand.nextInt(2);
+        String returnString = "You see "+name;
+        if(isLocked){returnString += " is locked. ";}
+        if(!isLocked){returnString += " is unlocked. ";}
+        if(killMe == null || killMe.getHealth()<=0){returnString += "\nYou don't hear anything inside.";}
+        if(killMe != null && killMe.getHealth()>0)
+        {
+            if(n == 0){returnString += "\nYou don't hear anything inside.";}
+            if(n == 1){returnString += "\nYou hear something moving around inside.";}
+        }
+        return returnString;
     }
 }

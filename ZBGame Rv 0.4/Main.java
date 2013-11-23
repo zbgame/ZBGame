@@ -21,16 +21,16 @@ public class Main
         buildingA = new Room("in the hallway of Building A", false);
         buildingB = new Room("in the hallway of Building B", false);
         buildingC = new Room("in the hallway of Building C", false);
-        a10 = new Room("in room A10", false);
+        a10 = new Room("in room A10", true);
         a11 = new Room("in room A11", false);
         a12 = new Room("in room A12", false);
         a13 = new Room("in room A13", false);
-        a14 = new Room("in room A14", false);
-        a15 = new Room("in room A15", false);
+        a14 = new Room("in room A14", true);
+        a15 = new Room("in room A15", true);
         a16 = new Room("in room A16", false);
         a17 = new Room("in room A17", false);
         a18 = new Room("in room A18", false);
-        a19 = new Room("in room A19", false);
+        a19 = new Room("in room A19", true);
         b10 = new Room("in room B10", false);
         b11 = new Room("in room B11", false);
         b12 = new Room("in room B12", false);
@@ -129,30 +129,48 @@ public class Main
         currentRoom = outside;  // start game outside
         i1.setRoom(currentRoom);
 
-        Key a10key = new Key(a10);
-        a10key.setName("a10key");
-        a10key.setQuantity(1);
+        //set items for invetory
+        Key a10key = new Key("a10key", "The key to room a10", 0, a10);
+        Key a14key = new Key("a14key", "The key to room a14", 0, a14);
+        Key a15key = new Key("a15key", "The key to room a15", 0, a15);
+        Key a19key = new Key("a19key", "The key to room a19", 0, a19);
+        
+        Food apple = new Food("apple","One of these a day may keep away medically inclined zombies.", 0, 2);
+        Food medpak = new Food("medpak","Staple medic kit seen in any proper zombie game.", 0, 10);
 
-        Weapon fists = new Weapon(1, true, false, "pummel them with your fists");
-        fists.setName("fists");
-        fists.setQuantity(1);
-
+        Weapon fists = new Weapon("fists", "Your own bear hands!", 2, 1, true, "pummel them with your fists");
+        
         //add items to inventory
         i1.setItem(a10key);
+        i1.setItem(a14key);
+        i1.setItem(a15key);
+        i1.setItem(a19key);
+        i1.setItem(apple);
+        i1.setItem(medpak);
         i1.setItem(fists);
 
-        Item ietm = new Item();
-        ietm.setName("TheStuff");
-        outside.setItemsInRoom(ietm);
-
+        //set items for rooms
+        Item rooma10key = new Item("a10key", "The key to room a10", 1);
+        Item rooma14key = new Item("a14key", "The key to room a14", 1);
+        
+        Item roomApple = new Item("apple","One of these a day may keep away medically inclined zombies.", 1);
+        Item roomMedpak = new Item("medpak","Staple medic kit seen in any proper zombie game.", 1);
+        
+        //add items to rooms
+        a11.setItemsInRoom(rooma10key);
+        a10.setItemsInRoom(rooma14key);
+        a12.setItemsInRoom(roomApple);
+        
         //add enemies
-        Enemy itsHim = new Enemy("Him!","an enemy", 5);
+        Zombie Sweissman = new Zombie("Mr. Sweissman", "It's Mr. Sweissman", 25);
+        Zombie megaMan = new Zombie("MegaMan", "He's a super fighting robot", 15);
+        Zombie itsHim = new Zombie("Him!","Him! is an enemy", 5);
 
         //add attacks
         Attack doNothing = new Attack("does nothing...", 0);//Zaq: First attack should always be a do nothing type of attack
-        Attack doRub = new Attack("brushes against you, ouch.", 1);
-        itsHim.addAttack(doNothing);
-        itsHim.addAttack(doRub);
+        Attack doRub = new Attack("brushes against you, ouch.", 2);
+        itsHim.setBehavior(doNothing);
+        itsHim.setBehavior(doRub);
 
         //put enemies in rooms
         a10.setEnemy(itsHim);
@@ -211,7 +229,7 @@ public class Main
 
         if(command.isUnknown()) 
         {
-            System.out.println("I don't know what you mean...");
+            System.out.println("I don't know how to " + parser.getInput() + "!");
             return false;
         }
 
@@ -236,6 +254,14 @@ public class Main
         {
             look(command);
         }
+        else if (commandWord.equals("get"))
+        {
+            pickUp(command);
+        }
+        else if (commandWord.equals("soda"))// added to see if money class would be needed
+        {
+            buySoda(command);
+        }       
         // else command not recognised.
         return wantToQuit;
     }
@@ -303,7 +329,7 @@ public class Main
             System.out.println("Use what?");
             return;
         }
-        if(useThis == null)
+        if(useThis == null || i1.getItem(item).getQuantity() <= 0)
         {
             System.out.println("You don't have that!");
         }
@@ -313,9 +339,43 @@ public class Main
         }
     }
 
+    private void pickUp(Command command)//Zaq: New use method that calls for an item to be used using an overidden/overloaded item use() function called from inventory
+    {
+        String item = command.getSecondWord();
+        Item getThis = i1.getItem(item);
+
+        if(!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know what to use...
+            System.out.println("Get what?");
+            return;
+        }
+        if(!(getThis instanceof Item))
+        {
+            System.out.println("You can't get that!");
+        }
+        else
+        {
+            try
+            {
+                getThis.setQuantity(getThis.getQuantity()+currentRoom.getItemsInRoom(item).getQuantity());
+                System.out.println("You got "+currentRoom.getItemsInRoom(item).getQuantity()+" "+item);
+                currentRoom.removeItemFromRoom(item);
+            }
+            catch(NullPointerException e)
+            {
+                System.out.println("You can't get that!");
+                return;
+            }
+        }
+    }
+
     private void look(Command command)//Zaq: New look command, allows players to survey their surroundings and gather information about the game world
     {
         String secondWord = command.getSecondWord();
+        Room lookRoom = currentRoom.getExit(secondWord);
+        Item lookItem = currentRoom.getItemsInRoom(secondWord);
+        Zombie lookZombie = currentRoom.getEnemy();
         if(!command.hasSecondWord()) 
         {
             // if there is no second word, we look in the current room
@@ -324,6 +384,55 @@ public class Main
         else if(secondWord.equals("self"))
         {
             System.out.println(p1.getDescription());
+        }
+        else if(lookRoom instanceof Room)
+        {
+            System.out.println(lookRoom.look(secondWord));
+        }
+        else if(lookItem instanceof Item)
+        {
+            System.out.println(lookItem.getDescription());
+        }
+        else if (lookZombie instanceof Zombie)
+        {
+            System.out.println(lookZombie.description());
+        }
+    }
+
+    private void buySoda(Command command)
+    {
+        String secondWord = command.getSecondWord();
+        String answer;        
+        int hp = p1.getHitpoints();
+
+        if(!command.hasSecondWord())
+        {
+            System.out.println("Would you like to buy soda for $50?");              
+            answer = keyboard.nextLine();
+            if (answer.equals("yes"))
+            {
+                System.out.println("Great that will be 50$");
+                p1.setCash(p1.getCash());
+
+                System.out.println("You have " + "$" + p1.getCash() + ". Have a nice day!");
+                p1.setHitpoints((p1.getHitpoints() + 1));
+
+                if(p1.getHitpoints() <= 3 && p1.getHitpoints() >=0)
+                {
+                    System.out.println("One health has been restored. Your health is " + p1.getHitpoints() + ".");
+                }
+                else if(p1.getHitpoints() > 3)
+                {
+                    p1.setCash(p1.getCash() + 50);
+                    System.out.println("Wait...You don't need this.." + "$" + p1.getCash());                   
+                }
+            }
+
+            if(answer.equals("no"))        
+            {
+                System.out.println(currentRoom.getLongDescription());
+            }
+
         }
     }
 }

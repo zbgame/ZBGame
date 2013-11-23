@@ -6,14 +6,18 @@ public class Player
 {
     private String name;
     private int attackPower = 1;
-    private int maxHealth = 3;
-    private int health = 3;
-    private boolean alive; //not used at all
+    private int maxHealth = 1;
+    private int health = 1;
+    private int defense = 1;
+    private int wallet;
+    private int expNeeded = 10;
+    private int exp = 0;
     Inventory i1;
 
-    public Player(int hp)
+    public Player(int h)
     {
-        hp = health;
+        maxHealth = h;
+        health = maxHealth;
     }
 
     //Setters
@@ -36,17 +40,42 @@ public class Player
     {
         //not sure if needed or not either
     }
-    
+
     public void setAttackPower(int a)
     {
         attackPower = a;
     }
-    
+
     public void setInventory(Inventory i)
     {
         i1 = i;
     }
 
+    public void setCash(int w)
+    {
+        w = wallet;
+    }
+    
+    public void setDefense(int d)
+    {
+        defense = d;
+    }
+    
+    public void levelUp()
+    {
+        attackPower += 1;
+        maxHealth += 1;
+        health += 1;
+        defense += 1;
+        exp = 0;
+        expNeeded += 10;
+    }
+    
+    public void setExp(int x)
+    {
+        exp = x;
+    }
+    
     //Getters
 
     public String getName() 
@@ -58,10 +87,15 @@ public class Player
     {
         return health; 
     }
-    
+
     public int getAttackPower()
     {
         return attackPower;
+    }
+    
+    public int getCash()
+    {
+        return wallet;
     }
 
     public String getDescription()
@@ -71,10 +105,25 @@ public class Player
         returnString += i1.getItemString();
         return returnString;
     }
-    
-    public void hello()
+
+    public int getMaxHitpoints() 
     {
-        System.out.println("Are you there?");
+        return maxHealth; 
+    }
+
+    public int getDefense()
+    {
+        return defense;
+    }
+    
+    public int getExp()
+    {
+        return exp;
+    }
+    
+    public int getExpNeeded()
+    {
+        return expNeeded;
     }
 }
 

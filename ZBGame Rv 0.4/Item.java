@@ -6,12 +6,16 @@ public class Item    //sbw eliminated inner class Item  2013 10 17  1600
 {
     private String name;//items name, all items will have names
     private String description;//all items will have descriptions when you look at them
-    private int quantity;//the number of items you have, some items will need overridden functions for removing items
+    private int quantity = 0;//the number of items you have, some items will need overridden functions for removing items
     private double durability;// the number of times you can use an item before it breaks, used double incase of percentage chances
 
-    public Item()  //sw: Armor extensd Items needs no-arg constructor  
+    public Item(){}
+    
+    public Item(String n, String d, int q)  //sw: Armor extensd Items needs no-arg constructor  
     {
-
+        name = n;
+        description = d;
+        quantity = q;
     }
 
     public String getName()
@@ -47,11 +51,6 @@ public class Item    //sbw eliminated inner class Item  2013 10 17  1600
     public void use()
     {
         System.out.println("You can't use that...\nYet!");
-    }
-    
-    public void pickUp()
-    {
-        
     }
 }
 

@@ -2,8 +2,11 @@ public class Key extends Item
 {
     private Room unlocks;
 
-    public Key(Room i)
+    public Key(String n, String e, int q, Room i)
     {
+        super.setName(n);
+        super.setDescription(e);
+        super.setQuantity(q);
         unlocks = i;
     }
 

@@ -1,6 +1,5 @@
 import java.util.Set;
 import java.util.HashMap;
-import java.util.ArrayList;
 /**@author Patrick Foltyn
  */
 public class Inventory 
@@ -24,14 +23,14 @@ public class Inventory
         }
         if(m instanceof Food && m.getQuantity()>0)
         {
-            ((Food)m).use();
+            ((Food)m).use(theGuy);
         }
         if(m instanceof Weapon && m.getQuantity()>0)
         {
-            ((Weapon)m).use(theGuy, currentRoom.getEnemy(), currentRoom);
+            ((Weapon)m).use(theGuy, currentRoom.getEnemy());
         }
     }
-
+    
     public Item getItem(String itemName) 
     {
         return items.get(itemName);
@@ -70,7 +69,7 @@ public class Inventory
         {
             if(getItem(item).getQuantity()>0)
             {
-                returnString += " " + item;
+                returnString += ", "+getItem(item).getQuantity()+" "+ item;
             }
         }
         returnString += " in your inventory.";

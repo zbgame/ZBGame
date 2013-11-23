@@ -1,39 +1,23 @@
 public class Food extends Item
 {
-    private int foodStat, increasedHealth, decreasedHealth, health;
+    private int increasedHealth;
 
-    public Food(String n, int f, int h, int i)
+    public Food(String n, String e, int q, int i)
     {
+        super.setName(n);
+        super.setDescription(e);
+        super.setQuantity(q);
         increasedHealth = i;
-        foodStat = f;
-        health = h;
     }
 
-    public void addFood(int foodStat)
+    public void use(Player p)
     {
-    }
-
-    public void removeFood(String itemName, int foodStat)
-    {
+        p.setHitpoints(p.getHitpoints()+increasedHealth);
+        if(p.getHitpoints()>p.getMaxHitpoints())
         {
-
+            p.setHitpoints(p.getMaxHitpoints());
         }
-    }
-
-    public void eat()
-    {
-        increasedHealth = health + foodStat;
-        System.out.println(increasedHealth + " has been added to your HP");
-    } 
-
-    public void digest() //Not sure if food had a more lasting effect or not...can be removed
-    {
-        decreasedHealth = health -= foodStat;
-        System.out.println(decreasedHealth + " has been subtracted from your HP");
-    }
-
-    public void use(Inventory i)
-    {
-        i.getPlayer().setHitpoints(i.getPlayer().getHitpoints()+increasedHealth);
+        super.setQuantity(super.getQuantity() - 1);
+        System.out.println("You used "+super.getName());
     }
 }
