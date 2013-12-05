@@ -14,10 +14,7 @@ public class Main
 
     private void generateStuff()//Zaq: Current means of manually generating all the instances in the game and setting values like exits, items, and enemies
     {
-        Room outside, buildingA, buildingB, buildingC, 
-        a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, 
-        b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, 
-        c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
+        Room outside, buildingA, buildingB, buildingC, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
 
         // create the rooms
         outside = new Room("outside the university", false);
@@ -32,7 +29,7 @@ public class Main
         a15 = new Room("in room A15", true);
         a16 = new Room("in room A16", false);
         a17 = new Room("in room A17", false);
-        a18 = new Room("in room A18", true);
+        a18 = new Room("in the Shrine~ of the Silver Monkey.", true);
         a19 = new Room("in room A19", true);
         b10 = new Room("in room B10", false);
         b11 = new Room("in room B11", false);
@@ -156,6 +153,8 @@ public class Main
         //set food
         Food apple = new Food("apple","One of these a day may keep away medically inclined zombies.", 0, 2);
         Food chocolate = new Food("chocolate","chocolate? Chocolate! CHOCOLAAAAAAAAAAAAAAAAAAAAAATE!!!", 0, 5);
+        Food energy = new Food("energypowder","Restores Pokémon HP by 50, unfortunately that's only 5 for you.", 0, 5);
+        Food ration = new Food("ration","A FOXHOUND field ration.", 0, 7);
         Food medpak = new Food("medpak","Staple medic kit seen in any proper zombie game.", 0, 10);
         
         //set weapons
@@ -184,6 +183,8 @@ public class Main
         i1.setItem(ckey);
         i1.setItem(apple);
         i1.setItem(chocolate);
+        i1.setItem(energy);
+        i1.setItem(ration);
         i1.setItem(medpak);
         i1.setItem(fists);
         i1.setItem(shotgun);
@@ -197,7 +198,7 @@ public class Main
         Item rooma10key = new Item("a10key", "The key to room a10", 1);
         Item rooma14key = new Item("a14key", "The key to room a14", 1);
         Item rooma15key = new Item("a15key", "The key to room a15", 1);
-        Item rooma18key = new Item("secretkey", "Shhhhhhh. This key is a secret... Don't tell anyone.", 1);
+        Item rooma18key = new Item("secretkey", "This key is a secret... Don't tell anyone.", 1);
         Item rooma19key = new Item("a19key", "The key to room a19", 1);
         Item roomb12key = new Item("b12key", "The key to room b12", 1);
         Item roomb13key = new Item("b13key", "The key to room b13", 1);
@@ -212,6 +213,9 @@ public class Main
         
         //Healing Items
         Item roomApple = new Item("apple","One of these a day may keep away medically inclined zombies.", 1);
+        Item roomChocolate = new Item("chocolate","chocolate? Chocolate! CHOCOLAAAAAAAAAAAAAAAAAAAAAATE!!!", 1);
+        Item roomEnergy = new Item("energypowder","Restores Pokémon HP by 50, unfortunately that's only 5 for you.", 1);
+        Item roomRation = new Item("ration","A FOXHOUND field ration.", 1);
         Item roomMedpak = new Item("medpak","Staple medic kit seen in any proper zombie game.", 1);
         
         //Weapons
@@ -232,37 +236,43 @@ public class Main
         c17.setItemsInRoom(roomc11key);
         
         //add enemies
-        Zombie sweissman = new Zombie("Mr.Sweissman", "It's Mr.Sweissman", 25, 0, outside, 99);//final boss
-        Zombie chem = new Zombie("ChemTeacher","The \"EVIL\" chemistry teacher.",21, 50, outside, 10);//third mini-boss
-        Zombie megaMan = new Zombie("MegaMan", "He's a super fighting robot", 15, 20, outside, 5);//first boss
+        Zombie sweissman = new Zombie("Mr.Sweissman", "It's Mr.Sweissman", 25, 0, c19, 99);//final boss
+        Zombie chem = new Zombie("ChemTeacher","The \"EVIL\" chemistry teacher.",21, 50, c12, 10);//third mini-boss
+        Zombie megaMan = new Zombie("MegaMan", "He's a super fighting robot", 15, 20, a19, 5);//first boss
         Zombie cutsMan = new Zombie("CutsMan", "You'll have to play the game atleast 50 times before you can make it to CutsMan.", 12, 10, a15, 3);//first mini-boss
-        Zombie ganon = new Zombie("Ganon", "It is written, only Link can defeat Ganon.", 18, 30, outside, 8);//second boss
-        Zombie morshu = new Zombie("Morshu", "He can't give credit, come back when your a little, hmmm, richer.", 16, 25, outside, 6);//second mini-boss
+        Zombie ganon = new Zombie("Ganon", "It is written, only Link can defeat Ganon.", 18, 30,  b19, 8);//second boss
+        Zombie morshu = new Zombie("Morshu", "He can't give credit, come back when your a little, hmmm, richer.", 16, 25, b13, 6);//second mini-boss
         Zombie zombie1 = new Zombie("Zombie","A generic zombie.", 5, 5, a10, 1);
         Zombie zombie2 = new Zombie("Zombie","A zombie with a shotgun.", 4, 6, a12, 1);//shotgun zombie
-        Zombie zombie3 = new Zombie("Zombie","A generic zombie.", 5, 7, outside, 1);
-        Zombie zombie4 = new Zombie("Zombie","A cheerleader zombie with a chainsaw.", 5, 6, outside, 1);//girl zombie
-        Zombie zombie5 = new Zombie("Zombie","A generic zombie.", 5, 5, outside, 1);
-        Zombie zombie6 = new Zombie("Zombie","A generic zombie.", 5, 7, outside, 1);
-        Zombie zombie7 = new Zombie("Zombie","A generic zombie.", 5, 8, outside, 1);
-        Zombie zombie8 = new Zombie("Zombie","A generic zombie.", 5, 9, outside, 1);
-        Zombie zombie9 = new Zombie("Zombie","A generic zombie.", 5, 8, outside, 1);
-        Zombie zombie10 = new Zombie("Zombie","A generic zombie.", 5, 7, outside, 1);
-        Zombie zombie11 = new Zombie("Zombie","A generic zombie.", 5, 9, outside, 1);
-        Zombie zombie12 = new Zombie("Zombie","A generic zombie.", 5, 10, outside, 1);
-        Zombie zombie13 = new Zombie("Zombie","A generic zombie.", 5, 11, outside, 1);
-        Zombie zombie14 = new Zombie("Zombie","A generic zombie.", 5, 10, outside, 1);
-        Zombie zombie15 = new Zombie("Zombie","A generic zombie.", 5, 9, outside, 1);
-        Zombie zombie16 = new Zombie("SecretZombie","A peculiar weapon concealing zombie.", 20, 13, outside, 1);//secret zombie
-        Zombie zombie17 = new Zombie("Zombie","A generic zombie.", 5, 13, outside, 1);
-        Zombie zombie18 = new Zombie("Zombie","A generic zombie.", 5, 13, outside, 1);
-        Zombie zombie19 = new Zombie("Zombie","A generic zombie.", 5, 13, outside, 1);
+        Zombie zombie3 = new Zombie("Zombie","A generic zombie.", 5, 7, a13, 1);
+        Zombie zombie4 = new Zombie("Zombie","A cheerleader zombie with a chainsaw.", 7, 6, a16, 1);//girl zombie
+        Zombie zombie5 = new Zombie("Zombie","A generic zombie.", 6, 5, a17, 1);
+        Zombie zombie6 = new Zombie("Zombie","A generic zombie.", 8, 7, b11, 1);
+        Zombie zombie7 = new Zombie("Zombie","A crazed zombie wearing a straight jacket, he foams at the mouth.", 9, 8, b12, 1);//bite
+        Zombie zombie8 = new Zombie("Zombie","A generic zombie.", 8, 9, b16, 1);
+        Zombie zombie9 = new Zombie("Zombie","A generic zombie.", 9, 8, b17, 1);//punch
+        Zombie zombie10 = new Zombie("Zombie","A generic zombie.", 8, 7, b18, 1);
+        Zombie zombie11 = new Zombie("Zombie","A generic zombie.", 10, 9, buildingC, 1);
+        Zombie zombie12 = new Zombie("Zombie","A generic zombie.", 10, 10, c10, 1);
+        Zombie zombie13 = new Zombie("Zombie","A screeching dire zombie.", 12, 11, c13, 1);//screech
+        Zombie zombie14 = new Zombie("Zombie","A generic zombie.", 10, 10, c14, 1);
+        Zombie zombie15 = new Zombie("Zombie","A generic zombie.", 10, 9, c16, 1);
+        Zombie zombie16 = new Zombie("SecretZombie","A peculiar weapon concealing zombie.", 20, 13, a18, 1);//secret zombie
+        Zombie zombie17 = new Zombie("Zombie","A generic zombie.", 5, 13, c18, 1);
+        Zombie zombie18 = new Zombie("Zombie","A generic zombie.", 5, 13, outside, 1);//un-used
+        Zombie zombie19 = new Zombie("Zombie","A generic zombie.", 5, 13, outside, 1);//un-used
 
         //add attacks
         Attack doNothing = new Attack("does nothing...", 0);//Zaq: First attack should always be a do nothing type of attack
         Attack weakRub = new Attack("brushes against you, ouch.", 2);//low power attack added for testing, not very good
         Attack weakScratch = new Attack("scratches you with it's claws.", 4);//zombie weak claw attack
-        Attack shotgunSmack = new Attack("clubs you with a shotgun", 3);//for shotgun weilding zombie2
+        Attack midScratch = new Attack("scratches you with it's claws.", 5);
+        Attack midPunch = new Attack("strikes you with it's fists.", 4);
+        Attack midBite = new Attack("sinks it's teeth into you.", 6);
+        Attack strongBite = new Attack("sinks it's teeth into you.", 8);
+        Attack strongScreech = new Attack("let's out an ear piercing screech, your ears are ringing.", 6);
+        Attack shotgunSmack = new Attack("clubs you with a shotgun", 3);//for shotgun wielding zombie2
+        Attack chainsaw = new Attack("blasts you with her chainsaw.", 4);//for girl zombie
         Attack megaBuster = new Attack("fires his transforming arm cannon.", 3);//megaman's main weapon, might enter into array 2 or 3 times for more frequency
         Attack doubleMegaBuster = new Attack("uses both his arm cannons to fire a more powerful blast, bet you didn't know he could do that.", 6);//megaman
         Attack hyperShell = new Attack("fires a giant bazooka that does massive damage, if it was upgraded correctly.", 5);//megaman
@@ -283,18 +293,78 @@ public class Main
         //attacks for zombie3
         zombie3.setBehavior(doNothing);
         zombie3.setBehavior(weakRub);
+        zombie3.setBehavior(weakScratch);
         
         //attacks for zombie4
         zombie4.setBehavior(doNothing);
         zombie4.setBehavior(weakRub);
+        zombie4.setBehavior(weakScratch);
+        zombie4.setBehavior(chainsaw);
         
         //attacks for zombie5
         zombie5.setBehavior(doNothing);
         zombie5.setBehavior(weakRub);
+        zombie5.setBehavior(weakScratch);
+        
+        //attacks for zombie6
+        zombie6.setBehavior(doNothing);
+        zombie6.setBehavior(weakScratch);
+        zombie6.setBehavior(midScratch);
+        
+        //attacks for zombie7
+        zombie7.setBehavior(doNothing);
+        zombie7.setBehavior(weakScratch);
+        zombie7.setBehavior(midScratch);
+        zombie7.setBehavior(midBite);
+        
+        //attacks for zombie8
+        zombie8.setBehavior(doNothing);
+        zombie8.setBehavior(weakScratch);
+        zombie8.setBehavior(midScratch);
+        
+        //attacks for zombie9
+        zombie9.setBehavior(doNothing);
+        zombie9.setBehavior(midPunch);
+        zombie9.setBehavior(midScratch);
+        
+        //attacks for zombie10
+        zombie10.setBehavior(doNothing);
+        zombie10.setBehavior(weakScratch);
+        zombie10.setBehavior(midScratch);
+        
+        //attacks for zombie11
+        zombie11.setBehavior(doNothing);
+        zombie11.setBehavior(midScratch);
+        zombie11.setBehavior(strongBite);
+        
+        //attacks for zombie12
+        zombie12.setBehavior(doNothing);
+        zombie12.setBehavior(midScratch);
+        zombie12.setBehavior(midBite);
+        zombie12.setBehavior(strongBite);
+        
+        //attacks for zombie13
+        zombie13.setBehavior(doNothing);
+        zombie13.setBehavior(midScratch);
+        zombie13.setBehavior(midBite);
+        zombie13.setBehavior(strongScreech);
+        
+        //attacks for zombie14
+        zombie14.setBehavior(doNothing);
+        zombie14.setBehavior(midScratch);
+        zombie14.setBehavior(strongBite);
+        
+        //attacks for zombie15
+        zombie15.setBehavior(doNothing);
+        zombie15.setBehavior(midScratch);
         
         //attacks for zombie16
         zombie16.setBehavior(doNothing);
         zombie16.setBehavior(weakRub);
+        
+        //attacks for zombie17
+        zombie17.setBehavior(doNothing);
+        zombie17.setBehavior(strongBite);
         
         //attacks for MegaMan
         megaMan.setBehavior(doNothing);
@@ -319,7 +389,7 @@ public class Main
         //put enemies in rooms
         a10.setEnemy(zombie1);
         a12.setEnemy(zombie2);
-        a15.setEnemy(zombie3);
+        a13.setEnemy(zombie3);
         a16.setEnemy(zombie4);
         a17.setEnemy(zombie5);
         a18.setEnemy(zombie16);
@@ -359,6 +429,7 @@ public class Main
         chem.addItem(roomc19key);
         zombie16.addItem(roomCrysknife);
         
+        //assign the inventory to the player
         p1.setInventory(i1);
     }
 
@@ -583,11 +654,11 @@ public class Main
             System.out.println(lookZombie.description());
         }
     }
-    
+
     private void buySoda(Command command)
     {
         String secondWord = command.getSecondWord();
-        String answer;        
+        String answer;
         int hp = p1.getHitpoints();
 
         if(!command.hasSecondWord())
@@ -597,21 +668,20 @@ public class Main
             answer = keyboard.nextLine();
             if (answer.equals("yes"))
             {
-                if(p1.getCash() >= 200)
+                if(p1.getCash() >= 2)
                 {
                     if(p1.getHitpoints() < p1.getMaxHitpoints())
                     {
                         System.out.println("Great that will be $2.00");
-                        p1.setCash(p1.getCash() - 200);
-        
+                        p1.setCash(p1.getCash() - 2);
+
                         System.out.println("You have " + "$" + p1.getCash() + ". Have a nice day!");
                         p1.setHitpoints((p1.getHitpoints() + 2));
                         System.out.println("Your health is " + p1.getHitpoints() + ".");
                     }
                     else
                     {
-                        p1.setCash(p1.getCash() + 200);
-                        System.out.println("Wait...You don't need this.." + "$\n" + "Your wallet holds: $" + p1.getCash());                   
+                        System.out.println("Wait...You don't need this.." + "$\n" + "Your wallet holds: $" + p1.getCash());
                     }
                 }
                 else
@@ -626,3 +696,4 @@ public class Main
         }
     }
 }
+

@@ -92,7 +92,7 @@ public class Weapon extends Item
                 {
                     p.levelUp();
                 }
-                p.setCash(p.getCash()+e.dropCash());
+                p.setCash(p.getCash()+ e.dropCash());
                 System.out.println("You found $" + e.dropCash() + " worth on the zombie.");
                 e.dropStuff();
             }

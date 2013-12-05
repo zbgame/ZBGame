@@ -42,7 +42,7 @@ public class Player
 
     public void setCash(int w)
     {
-        w = wallet;
+        wallet = w;
     }
     
     public void setDefense(int d)
@@ -94,6 +94,7 @@ public class Player
         returnString += name+".\n"+"You have "+health+" health remaining.\n";
         returnString += i1.getItemString();
         returnString += ".\n" + "You have " + exp + " out of " + expNeeded + " experience.";
+        returnString += "\n" + "You have $" + wallet;
         return returnString;
     }
 
