@@ -1,8 +1,7 @@
+public class Item
 /**
- *
- * @author Samantha
+ * @author Viola
  */
-public class Item    //sbw eliminated inner class Item  2013 10 17  1600
 {
     private String name;//items name, all items will have names
     private String description;//all items will have descriptions when you look at them

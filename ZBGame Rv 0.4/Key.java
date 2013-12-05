@@ -1,4 +1,7 @@
 public class Key extends Item 
+/**
+ * @author Viola
+ */
 {
     private Room unlocks;
 

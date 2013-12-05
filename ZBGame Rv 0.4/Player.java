@@ -1,5 +1,4 @@
-/** @author Blacklotus3
- * edited on 10/21/2013 by Brandon Pugh
+/** @author Steven Moore
  * edited by Steven Moore from 10/21/2013 - current
  */
 public class Player 
@@ -31,16 +30,6 @@ public class Player
         health = hp;
     }
 
-    public void retrieveItem(Inventory i)
-    {
-        //iunno if needed or not
-    }
-
-    public void useItem(Inventory i)
-    {
-        //not sure if needed or not either
-    }
-
     public void setAttackPower(int a)
     {
         attackPower = a;
@@ -67,8 +56,9 @@ public class Player
         maxHealth += 1;
         health += 1;
         defense += 1;
-        exp = 0;
+        exp -= expNeeded;
         expNeeded += 10;
+        System.out.println(name + " feels new strength rushing through their veins!");
     }
     
     public void setExp(int x)
@@ -103,6 +93,7 @@ public class Player
         String returnString = "You are ";
         returnString += name+".\n"+"You have "+health+" health remaining.\n";
         returnString += i1.getItemString();
+        returnString += ".\n" + "You have " + exp + " out of " + expNeeded + " experience.";
         return returnString;
     }
 

@@ -1,38 +1,31 @@
 import java.util.Random;
 import java.util.ArrayList;
 public class Zombie 
+/** @author Nick
+ * ba-donk-a donkest version
+ */
 {
-    //to start, this class is used to contain the entire sequence between
-    //an NPC zombie and the player. The class will also determine the type
-    //of item dropped.
-
     private String name;       //I feel this is unneccessary but may be useful;
     private int maxHealth;     //Maximum health to start with (wondering if single health variable is enough)
     private int currentHealth; //how much health the zombie currently has
 
-    private Item held;         //Item the Zombie will drop for player after death
     private int heldCash;      //amount of money the player gains after battle
-    private boolean alive; 
     private String description;
+    private Room theRoom;
     private ArrayList<Attack> behavior = new ArrayList<Attack>();
+    private ArrayList<Item> drops = new ArrayList<Item>();
     private boolean first = false;//current living condition. Preset to alive for obvious reasons
+    private int expDropped;
 
-    public Zombie(String n, String d, int h) // constructor
+    public Zombie(String n, String d, int h, int e, Room r, int m) // constructor
     {
         name = n;
         maxHealth = h;
         currentHealth = maxHealth;
         description = d;
-    }
-
-    public Zombie(Zombie z) // copy constructor
-    {
-        name = z.name;
-        maxHealth = z.maxHealth;
-        description = z.description;
-        held = z.held;
-        heldCash = z.heldCash;
-        currentHealth = maxHealth;
+        expDropped = e;
+        theRoom = r;
+        heldCash = m;
     }
 
     public void getBehavior(Player p)
@@ -80,11 +73,6 @@ public class Zombie
         return description;
     }
 
-    public Item drop()                                      // upon dying, the zombie will drop the item and reutnr it to the player from this method
-    {
-        return held;    
-    }
-
     public int getHealth()                                     // upon dying, the zombie will drop the item and reutnr it to the player from this method
     {
         return currentHealth;
@@ -99,4 +87,25 @@ public class Zombie
     {
         return heldCash;
     } 
+    
+    public void dropStuff()
+    {
+        String returnString = name + " drops";
+        for(int i = 0; i < drops.size(); i++)
+        {
+            returnString += " " + drops.get(i).getName();
+            theRoom.setItemsInRoom(drops.get(i));
+        }
+        System.out.println(returnString);
+    }
+    
+    public void addItem(Item i)
+    {
+        drops.add(i);
+    }
+    
+    public int getExp()
+    {
+        return expDropped;
+    }
 }

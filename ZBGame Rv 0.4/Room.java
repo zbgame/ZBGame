@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Write a description of class room here.
  * 
- * @author (your name) 
+ * @author Viola
  * @version much work
  */
 public class Room

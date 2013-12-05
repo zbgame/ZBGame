@@ -1,5 +1,6 @@
 /**
- * @author  Michael Kölling and David J. Barnes @modified Zachary Molisee
+ * @author  Michael Kölling and David J. Barnes 
+ * @modified Zachary Molisee
  */
 
 public class CommandWords

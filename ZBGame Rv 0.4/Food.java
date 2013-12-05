@@ -1,4 +1,7 @@
 public class Food extends Item
+/**
+ * @author Viola
+ */
 {
     private int increasedHealth;
 

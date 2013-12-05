@@ -1,4 +1,8 @@
 public class Weapon extends Item
+/**
+ * @author Viola
+ * @version many work
+ */
 {
     private int attackModifier;//increase the players attack by this much when the attack function is called
     private boolean doesAttackStack = true;//can be used to over ride players attack stat and only use weapons attack, guns do not use any of your own physical strength
@@ -68,17 +72,29 @@ public class Weapon extends Item
             System.out.println("You " + attackDescriptor);
             e.setHealth(e.getHealth() - (p.getAttackPower() + attackModifier));
             System.out.println("He looks like he has about " + e.getHealth() + " left");
+            checkThingsOut(p, e);
         }
         else if(e != null && !doesAttackStack)
         {
             System.out.println("You " + attackDescriptor);
             e.setHealth(e.getHealth() - attackModifier);
             System.out.println("He looks like he has about " + e.getHealth() + " left");
+            checkThingsOut(p, e);
         }
-        /**if(e.getHealth() <= 0)
-        {
-            System.out.println("You have defeated " + e.getName());
-            r.setEnemy(null);//Zaq: Null pointer error occures after this has been set and you try attacking again. ??? It's 5:30 am, I'm going to sleep. ZzZzZzZzZz~
-        }*/
+    }
+    
+    private void checkThingsOut(Player p, Zombie e)
+    {
+        if(e.getHealth() <= 0)
+            {
+                p.setExp(p.getExp()+e.getExp());
+                while(p.getExp() >= p.getExpNeeded())
+                {
+                    p.levelUp();
+                }
+                p.setCash(p.getCash()+e.dropCash());
+                System.out.println("You found $" + e.dropCash() + " worth on the zombie.");
+                e.dropStuff();
+            }
     }
 }
